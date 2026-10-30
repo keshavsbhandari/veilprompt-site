@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VeilPrompt</title>
+<style>
+  body { margin: 0; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; color: #0f172a; background: #f6f8fb; line-height: 1.6; }
+  main { max-width: 760px; margin: 0 auto; padding: 56px 24px 72px; }
+  a { color: #0f766e; }
+  h1 { font-size: 2.4rem; line-height: 1.1; margin-bottom: 8px; }
+  h2 { font-size: 1.3rem; margin-top: 36px; }
+  .lede { font-size: 1.15rem; color: #475569; }
+  .callout { background: #ccfbf1; border-left: 4px solid #0f766e; padding: 16px 20px; border-radius: 8px; margin: 24px 0; }
+  ol li, ul li { margin-bottom: 8px; }
+  footer { margin-top: 48px; color: #475569; font-size: 0.95rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>VeilPrompt</h1>
+  <p class="lede">Swap the real names out before the chat sees them.</p>
+
+  <p>VeilPrompt is a browser extension that replaces personal data in your messages with realistic stand-ins before they leave your browser. When the reply comes back, it puts your real values back on your screen.</p>
+
+  <div class="callout"><strong>YOUR PII STAYS WITH YOU.</strong> Detection runs on your device. VeilPrompt has no server and does not upload your messages.</div>
+
+  <h2>How it works</h2>
+  <ol>
+    <li><strong>Detect.</strong> Emails, phone numbers, card numbers, bank accounts, national IDs, API keys, and IP addresses are found by pattern checks. Names, addresses, and cities are found by a small local model.</li>
+    <li><strong>Stand in.</strong> Each value is replaced with one of the same kind, such as a card number that passes the Luhn check.</li>
+    <li><strong>Restore.</strong> The reply is shown with your real values again, while VeilPrompt is installed.</li>
+  </ol>
+
+  <h2>What to expect</h2>
+  <ul>
+    <li>Detection is not perfect. Check the highlighted items before you send. You decide what gets hidden: turn any item off, or add values to the allow list.</li>
+    <li>The first time you enable names and addresses, VeilPrompt downloads a model of about 58 MB from Hugging Face. After that it is cached in your browser.</li>
+    <li>Works on ChatGPT (chatgpt.com and chat.openai.com) in this first release.</li>
+  </ul>
+
+  <h2>Privacy</h2>
+  <p>Your data stays in your browser. Read the full <a href="privacy.html">privacy policy</a>.</p>
+
+  <h2>Get VeilPrompt</h2>
+  <p>Chrome Web Store listing: coming soon.</p>
+
+  <h2>Feedback</h2>
+  <p>Questions, bug reports, or ideas: <a href="https://github.com/keshavsbhandari/veilprompt-site/issues">open an issue</a>.</p>
+
+  <footer>VeilPrompt · local-only privacy for AI chat</footer>
+</main>
+</body>
+</html>
