@@ -12,6 +12,7 @@
   h2 { font-size: 1.3rem; margin-top: 36px; }
   .lede { font-size: 1.15rem; color: #475569; }
   .callout { background: #ccfbf1; border-left: 4px solid #0f766e; padding: 16px 20px; border-radius: 8px; margin: 24px 0; }
+  .limits { background: #fef3c7; border-left: 4px solid #b45309; padding: 16px 20px; border-radius: 8px; margin: 24px 0; }
   ol li, ul li { margin-bottom: 8px; }
   footer { margin-top: 48px; color: #475569; font-size: 0.95rem; }
 </style>
@@ -21,23 +22,35 @@
   <h1>VeilPrompt</h1>
   <p class="lede">Swap the real names out before the chat sees them.</p>
 
-  <p>VeilPrompt is a browser extension that replaces personal data in your messages with realistic stand-ins before they leave your browser. When the reply comes back, it puts your real values back on your screen.</p>
+  <p>VeilPrompt is a browser extension for ChatGPT. It replaces personal data in your messages with realistic stand-ins before they leave your browser. When the reply comes back, it shows your real values again on your screen.</p>
 
-  <div class="callout"><strong>YOUR PII STAYS WITH YOU.</strong> Detection runs on your device. VeilPrompt has no server and does not upload your messages.</div>
+  <div class="callout"><strong>YOUR PII STAYS WITH YOU.</strong> Detection runs on your device. VeilPrompt has no server and does not upload your messages, stand-in tables, or conversation logs.</div>
+
+  <h2>Best for</h2>
+  <ul>
+    <li>One-off tasks in ChatGPT that involve personal data: summarizing an email thread, a support ticket, or meeting notes.</li>
+    <li>Rewriting or proofreading a cover letter, CV, or message that contains your contact details.</li>
+    <li>Asking questions about a contract, invoice, or log file that contains bank details, card numbers, or API keys.</li>
+  </ul>
 
   <h2>How it works</h2>
   <ol>
     <li><strong>Detect.</strong> Emails, phone numbers, card numbers, bank accounts, national IDs, API keys, and IP addresses are found by pattern checks. Names, addresses, and cities are found by a small local model.</li>
     <li><strong>Stand in.</strong> Each value is replaced with one of the same kind, such as a card number that passes the Luhn check.</li>
-    <li><strong>Restore.</strong> The reply is shown with your real values again, while VeilPrompt is installed.</li>
+    <li><strong>Restore.</strong> The reply is shown with your real values again, while VeilPrompt is installed and on for that chat.</li>
   </ol>
 
-  <h2>What to expect</h2>
-  <ul>
-    <li>Detection is not perfect. Check the highlighted items before you send. You decide what gets hidden: turn any item off, or add values to the allow list.</li>
-    <li>The first time you enable names and addresses, VeilPrompt downloads a model of about 58 MB from Hugging Face. After that it is cached in your browser.</li>
-    <li>Works on ChatGPT (chatgpt.com and chat.openai.com) in this first release.</li>
-  </ul>
+  <div class="limits">
+    <strong>Limits</strong>
+    <ul>
+      <li>Detection is not perfect. Check the highlighted items before you send. Turn off any item you do not want hidden, or add values to the allow list.</li>
+      <li>Names and addresses need the local model, which downloads once (about 58 MB, from Hugging Face) when you press <em>Download model</em>.</li>
+      <li>Works only on ChatGPT (chatgpt.com and chat.openai.com) in Chrome on desktop. Claude and Gemini are not supported yet.</li>
+      <li>Built for single tasks. Not reliable for long conversations or for reopening older chats: the stand-in table and conversation log are kept only for the browser session.</li>
+      <li>Files, images, and voice input are not masked.</li>
+      <li>VeilPrompt does not control how ChatGPT or OpenAI handles what it receives. Anything it did not detect is sent unchanged.</li>
+    </ul>
+  </div>
 
   <h2>Privacy</h2>
   <p>Your data stays in your browser. Read the full <a href="privacy.html">privacy policy</a>.</p>

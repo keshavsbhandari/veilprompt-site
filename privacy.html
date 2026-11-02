@@ -12,6 +12,7 @@
   h2 { font-size: 1.2rem; margin-top: 32px; }
   .meta { color: #475569; margin-top: 0; }
   .callout { background: #ccfbf1; border-left: 4px solid #0f766e; padding: 16px 20px; border-radius: 8px; }
+  .warn { background: #fef3c7; border-left: 4px solid #b45309; padding: 16px 20px; border-radius: 8px; }
   nav { margin-bottom: 24px; }
 </style>
 </head>
@@ -19,40 +20,46 @@
 <main>
   <nav><a href="index.html">← VeilPrompt</a></nav>
   <h1>Privacy Policy</h1>
-  <p class="meta">VeilPrompt · Last updated 30 October 2026</p>
+  <p class="meta">VeilPrompt · Last updated 1 November 2026</p>
 
-  <p class="callout"><strong>YOUR PII STAYS WITH YOU.</strong> VeilPrompt runs in your browser. It does not send your messages, personal data, or stand-in tables to any server, because VeilPrompt has no server.</p>
+  <p class="callout"><strong>YOUR PII STAYS WITH YOU.</strong> VeilPrompt runs in your browser. It does not send your messages, personal data, stand-in tables, or conversation logs to any server, because VeilPrompt has no server.</p>
 
   <h2>What VeilPrompt does</h2>
-  <p>VeilPrompt is a browser extension. Before a message you type into ChatGPT is sent, it finds personal data such as names, email addresses, phone numbers, card numbers, bank account numbers, national ID numbers, API keys, and addresses. It replaces each value with a realistic stand-in. When the reply comes back, it puts your real values back on your screen.</p>
+  <p>VeilPrompt is a browser extension for ChatGPT. Before a message you type is sent, it finds personal data such as names, email addresses, phone numbers, card numbers, bank account numbers, national ID numbers, API keys, and addresses. It replaces each value with a realistic stand-in. When the reply comes back, it shows your real values again on your screen. You can turn VeilPrompt off for a single chat, in which case that chat is sent as you typed it.</p>
 
   <h2>Where your data is processed</h2>
   <p>All detection and replacement happen on your device. Pattern checks run in the extension. Names, addresses, and cities are found by a small language model that also runs on your device.</p>
 
   <h2>What the extension stores, and where</h2>
   <ul>
-    <li><strong>Settings</strong> (which kinds of data to hide, your allow list, whether to anonymize automatically, and whether the model is on) are stored in your browser's local extension storage.</li>
-    <li><strong>The real-to-stand-in table</strong> for each conversation is stored in your browser's session storage. It is removed when the browser session ends. It is never uploaded, and VeilPrompt does not keep a copy outside your browser.</li>
-    <li><strong>A record of each input and its anonymized output</strong> is kept with that conversation's table, in the same session storage, so repeated inputs do not need to be processed again.</li>
+    <li><strong>Settings</strong> (which kinds of data to hide, your allow list, whether to anonymize automatically, whether VeilPrompt is on, and whether the model is on) are stored in your browser's local extension storage.</li>
+    <li><strong>The real-to-stand-in table</strong> for each chat is stored in your browser's session storage. It holds your real values.</li>
+    <li><strong>The conversation log</strong> for each chat is also stored in session storage. It holds what you typed, including your real values, the text that was sent with stand-ins, and each model reply as it was produced and as it was shown to you. The log keeps every message in the chat for the length of the browser session.</li>
+    <li>Session storage is cleared when the browser closes, when the extension is reloaded, disabled, or removed. Nothing is uploaded, and VeilPrompt keeps no copy outside your browser.</li>
   </ul>
 
+  <p class="warn"><strong>Your real values are in your browser's session storage while it is open.</strong> Anyone with access to your browser profile while the session is running could read them. Use a profile you control, and turn VeilPrompt off for a chat if you do not want its values stored.</p>
+
   <h2>Network requests</h2>
-  <p>VeilPrompt makes one kind of network request. When you press <em>Download model</em> on the setup page, it downloads a one-time detection model of about 58 MB from Hugging Face (huggingface.co). After that the model is cached in your browser and no further download is needed. VeilPrompt has no other connection to any server, and it does not send your text anywhere.</p>
+  <p>VeilPrompt makes one kind of network request. When you press <em>Download model</em> on the setup page, it downloads a one-time detection model of about 58 MB from Hugging Face (huggingface.co). The download starts only when you press that button. After that the model is cached in your browser, and no further download is needed. VeilPrompt has no other connection to any server, and it does not send your text anywhere.</p>
+
+  <h2>ChatGPT</h2>
+  <p>VeilPrompt does not change what ChatGPT does with a message once it is sent. The message ChatGPT receives contains the stand-ins, not your real values, for everything VeilPrompt detected. Anything VeilPrompt did not detect is sent unchanged. Your use of ChatGPT is governed by OpenAI's own terms and privacy policy, and VeilPrompt has no control over how OpenAI stores or uses the text it receives.</p>
 
   <h2>What we do not do</h2>
   <ul>
     <li>We do not collect analytics, telemetry, or usage data.</li>
     <li>We do not have accounts or sign-in.</li>
     <li>We do not sell, share, or transfer any data, because we do not receive any.</li>
-    <li>We do not read your chats outside the chat page where VeilPrompt is active.</li>
+    <li>We do not read your chats outside the ChatGPT pages where VeilPrompt is active.</li>
   </ul>
 
-  <h2>Replies and what you can recover</h2>
-  <p>While VeilPrompt is installed and the browser session lasts, you see replies with your real values put back. If you remove the extension, clear the browser storage that holds the table, or the session ends, you will see only the masked output. The original values cannot be recovered from the chat, because we do not store the table anywhere else.</p>
+  <h2>Replies, history, and what you can recover</h2>
+  <p>While VeilPrompt is installed and the browser session lasts, you see replies with your real values put back, and the conversation log shows what was sent and received. When the session ends, or you reload, disable, or remove the extension, the table and the log are gone. The original values cannot be recovered from the chat, because VeilPrompt does not store them anywhere else. Chats you open later may show only the stand-ins that ChatGPT stored.</p>
 
   <h2>Permissions</h2>
   <ul>
-    <li><strong>storage</strong>: saves your settings and the per-conversation tables described above.</li>
+    <li><strong>storage</strong>: saves your settings, the per-chat tables, and the conversation logs described above.</li>
     <li><strong>offscreen</strong>: runs the local detection model in a hidden browser page.</li>
     <li><strong>Site access</strong> (chatgpt.com and chat.openai.com): reads and changes the message box and reply text on those pages, so personal data can be replaced before sending and restored in replies.</li>
   </ul>
